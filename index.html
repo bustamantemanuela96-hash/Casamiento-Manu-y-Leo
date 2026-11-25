@@ -248,7 +248,7 @@ footer .n{font:400 34px "Bodoni Moda",serif;color:var(--cream)}
       <div class="err" id="gErr" role="alert"></div>
       <button class="btn solid" type="submit">Enviar</button>
     </form>
-    <div class="ok" id="gOk" role="status"><h3>¡Gracias!</h3><p>Ya recibimos tu mensaje. ¡Nos vemos en la pista!</p></div>
+    <div class="ok" id="gOk" role="status"><h3>¡Muchas gracias por tu regalo para nuestra luna de miel!</h3></div>
   </div>
 </dialog>
 
@@ -277,6 +277,9 @@ tick(); setInterval(tick, 30000);
 
 // envío a Google Sheets
 async function send(data){
+  return Promise.race([sendForm(data), new Promise(r => setTimeout(r, 6000))]);
+}
+async function sendForm(data){
   if (!SCRIPT_URL) { await new Promise(r=>setTimeout(r,500)); return; } // modo vista previa
   // envío con un formulario oculto: no depende de CORS y nunca se queda colgado
   await new Promise(res => {
