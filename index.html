@@ -241,13 +241,12 @@ footer .n{font:400 34px "Bodoni Moda",serif;color:var(--cream)}
       <div style="margin-top:10px"><span>CBU: 0720029888000003026940</span><button class="btn copy" data-copy="0720029888000003026940" data-l="Copiar CBU">Copiar CBU</button></div>
       <div style="margin-top:6px"><span>Alias: BAR.PODER.VERDE</span><button class="btn copy" data-copy="BAR.PODER.VERDE" data-l="Copiar alias">Copiar alias</button></div>
     </div>
-    <p class="wa">Mandanos el comprobante por WhatsApp al <b>11 3319-8250</b>.<br><a class="btn copy" id="waL" href="https://wa.me/5491133198250">Enviar por WhatsApp</a></p>
     <form id="gform" novalidate>
       <label>Tu nombre<input name="nombre" required></label>
       <div id="libreW" hidden style="display:grid;grid-template-columns:110px 1fr;gap:10px"><label>Moneda<select name="moneda"><option>USD</option><option>ARS</option></select></label><label>Monto<input name="libre" type="number" min="1" inputmode="numeric"></label></div>
-      <label>Un mensaje para Manu &amp; Leo<textarea name="mensaje"></textarea></label>
+      <label>Un mensaje para Leo &amp; Manu<textarea name="mensaje"></textarea></label>
       <div class="err" id="gErr" role="alert"></div>
-      <button class="btn solid" type="submit">Avisar que regalé</button>
+      <button class="btn solid" type="submit">Enviar</button>
     </form>
     <div class="ok" id="gOk" role="status"><h3>¡Gracias!</h3><p>Ya recibimos tu mensaje. ¡Nos vemos en la pista!</p></div>
   </div>
@@ -359,9 +358,8 @@ $("#exgrid").addEventListener("click", e => {
   cur = EXP[+b.dataset.i];
   $("#dlgCat").textContent = cur.cat; $("#dlgT").textContent = cur.t; $("#dlgP").textContent = fmt(cur);
   $("#libreW").hidden = !!cur.p; $("#gform").hidden = false; $("#gform").reset(); $("#gErr").textContent = "";
-  const sb = $("#gform button"); sb.disabled = false; sb.textContent = "Avisar que regalé";
+  const sb = $("#gform button"); sb.disabled = false; sb.textContent = "Enviar";
   $("#gOk").classList.remove("show");
-  $("#waL").href = "https://wa.me/5491133198250?text=" + encodeURIComponent("¡Hola Manu y Leo! Les regalé: " + cur.t + " (" + fmt(cur) + "). Les mando el comprobante.");
   dlg.showModal();
 });
 $("#dlgX").addEventListener("click", () => dlg.close());
@@ -378,7 +376,7 @@ $("#gform").addEventListener("submit", async e => {
   const monto = cur.p ? "USD " + cur.p : (d.moneda || "USD") + " " + (d.libre || "libre");
   const b = f.querySelector("button"); b.disabled = true; b.textContent = "Enviando…";
   try { await send({tipo:"regalo", nombre:d.nombre, experiencia:cur.t, monto, mensaje:d.mensaje||""}); f.hidden = true; $("#gOk").classList.add("show"); }
-  catch { $("#gErr").textContent = "No se pudo enviar. Probá de nuevo."; b.disabled = false; b.textContent = "Avisar que regalé"; }
+  catch { $("#gErr").textContent = "No se pudo enviar. Probá de nuevo."; b.disabled = false; b.textContent = "Enviar"; }
 });
 
 // vistas por hash
