@@ -278,7 +278,17 @@ tick(); setInterval(tick, 30000);
 // envío a Google Sheets
 async function send(data){
   if (!SCRIPT_URL) { await new Promise(r=>setTimeout(r,500)); return; } // modo vista previa
-  await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors", body:new URLSearchParams(data)});
+  // envío con un formulario oculto: no depende de CORS y nunca se queda colgado
+  await new Promise(res => {
+    const name = "envio" + Date.now();
+    const ifr = document.createElement("iframe"); ifr.name = name; ifr.hidden = true; document.body.append(ifr);
+    const f = document.createElement("form"); f.method = "POST"; f.action = SCRIPT_URL; f.target = name; f.hidden = true;
+    for (const [k,v] of Object.entries(data)) { const i = document.createElement("input"); i.type = "hidden"; i.name = k; i.value = v ?? ""; f.append(i); }
+    document.body.append(f);
+    let ok = false; const done = () => { if (ok) return; ok = true; res(); setTimeout(() => { ifr.remove(); f.remove(); }, 2000); };
+    ifr.addEventListener("load", done); setTimeout(done, 5000);
+    f.submit();
+  });
 }
 
 // RSVP
