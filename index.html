@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manu & Leo · 13.02.2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE: tierno, elegante, cálido; poco texto, mucho aire.
+   IDEA: el save the date de Manu & Leo convertido en sitio: noche en una palapa de Tulum, luz de velas.
+   PICTURE: la foto de la pista como hero, con la tipografía del save the date encima; techos de palapa dibujados como separadores.
+   COLOUR and TYPE: chocolate #2b1d17 dominante, visón #a8927f de apoyo, crema #f3eadf para texto y bandas claras; Bodoni Moda + Jost.
+   LAYOUT: bandas a todo el ancho que alternan noche (chocolate) y arena (crema); una columna central serena. */
+:root{color-scheme:light;--choc:#2b1d17;--choc2:#3a2820;--vison:#a8927f;--vison2:#c9b8a6;--sand:#e8dccd;--cream:#f5eee5;--ink:#2b1d17;--muted:#6f5a4c;--terra:#b7714f;--glow:#e3b58f}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--cream);color:var(--ink);font:300 16.5px/1.65 Jost,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Bodoni Moda",Didot,Georgia,serif;font-weight:400;margin:0;line-height:1.05;text-wrap:balance}
+h2{font-size:clamp(34px,5vw,52px)}
+h3{font-size:22px;line-height:1.2}
+a{color:inherit}
+.amp{font-style:italic}
+.small{letter-spacing:.28em;text-transform:uppercase;font-size:13px;font-weight:400}
+.band{padding:clamp(56px,8vw,112px) max(5vw,18px)}
+.wrap{max-width:1080px;margin:0 auto}
+.narrow{max-width:640px;margin:0 auto;text-align:center}
+.dark{background:radial-gradient(ellipse 70% 60% at 50% 110%,rgba(227,181,143,.18),transparent 70%),var(--choc);color:var(--cream)}
+.sand{background:var(--sand)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 28px;border:1px solid currentColor;background:transparent;color:inherit;font:400 13px Jost,sans-serif;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;border-radius:999px;transition:background .25s,color .25s}
+.btn:hover{background:var(--choc);color:var(--cream);border-color:var(--choc)}
+.dark .btn:hover{background:var(--cream);color:var(--choc);border-color:var(--cream)}
+.btn.solid{background:var(--choc);color:var(--cream);border-color:var(--choc)}
+.btn.solid:hover{background:var(--choc2)}
+:focus-visible{outline:2px solid var(--vison);outline-offset:3px}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:center;flex-wrap:wrap;gap:4px 22px;padding:14px 16px;background:rgba(43,29,23,.0);color:var(--cream);transition:background .3s}
+nav.on{background:rgba(43,29,23,.94);backdrop-filter:blur(6px)}
+nav a{text-decoration:none;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:6px 2px;opacity:.9}
+nav a:hover{opacity:1;border-bottom:1px solid var(--vison2)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;color:var(--cream);background:#1c130f;overflow:hidden;padding:110px 18px 70px}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 50%;opacity:.6;filter:sepia(.25) saturate(.85)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,15,.85) 0%,rgba(28,19,15,.25) 45%,rgba(28,19,15,.85) 100%)}
+.hero>div{position:relative;z-index:1}
+.hero h1{font-size:clamp(54px,11vw,128px);letter-spacing:.01em;margin:22px 0 16px}
+.hero .date{font-family:"Bodoni Moda",serif;font-size:clamp(26px,4vw,40px)}
+.hero .place{margin-top:clamp(40px,9vh,90px)}
+.count{display:flex;justify-content:center;gap:clamp(14px,4vw,40px);margin-top:34px}
+.count div{display:grid}
+.count b{font:400 clamp(28px,5vw,40px)/1 "Bodoni Moda",serif}
+.count span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;opacity:.8;margin-top:6px}
+
+/* palapa divider */
+.palapa{display:block;width:min(270px,80vw);height:auto;aspect-ratio:25/11;margin:0 auto 22px;color:var(--choc)}
+.dark .palapa{color:var(--glow)}
+
+/* cuando y donde */
+.grid3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px;margin-inline:auto;gap:clamp(18px,3vw,36px);margin-top:48px}
+.card{border:1px solid rgba(168,146,127,.45);border-radius:200px 200px 18px 18px;padding:64px 26px 34px;text-align:center;background:rgba(255,255,255,.35)}
+.dark .card{background:rgba(255,255,255,.03)}
+.card{display:flex;flex-direction:column;align-items:center}.card .btn{margin-top:auto!important}.card p{margin-bottom:22px!important}.card .time{font:400 40px/1 "Bodoni Moda",serif;white-space:nowrap;margin:14px 0 10px;display:block}
+.card p{margin:8px 0 0;color:var(--muted)}
+.dark .card p{color:var(--vison2)}
+.tbd{display:inline-block;margin-top:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vison)}
+.where{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.where .ph{aspect-ratio:4/5;border-radius:240px 240px 12px 12px;overflow:hidden;background:#1c130f}
+.where .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.where p{color:var(--vison2)}
+.dress{margin-top:22px;padding-top:22px;border-top:1px solid rgba(201,184,166,.3)}
+
+/* form */
+form{display:grid;gap:18px;text-align:left;margin-top:36px}
+label{display:grid;gap:6px;font-size:14px;letter-spacing:.06em}
+input,select,textarea{width:100%;font:400 16px Jost,sans-serif;color:var(--ink);background:#fffaf4;border:1px solid var(--vison2);border-radius:10px;padding:12px 14px;min-height:48px}
+textarea{min-height:96px;resize:vertical}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice label{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:1px solid var(--vison2);border-radius:999px;cursor:pointer;background:#fffaf4;font-size:15px}
+.choice input{width:auto;min-height:0;accent-color:var(--choc)}
+.choice label:has(input:checked){background:var(--choc);color:var(--cream);border-color:var(--choc)}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+legend{font-size:14px;letter-spacing:.06em;margin-bottom:8px}
+.note{font-size:14px;color:var(--muted);text-align:center}
+.ok{display:none;text-align:center;padding:30px;border:1px solid var(--vison2);border-radius:18px;margin-top:30px}
+.ok.show{display:block}
+.err{color:#8a2f1d;font-size:14px;min-height:1em}
+
+/* regalos */
+.gift{display:inline-grid;gap:10px;margin-top:30px;padding:28px 40px;border:1px solid rgba(201,184,166,.45);border-radius:18px;text-decoration:none}
+.gift h3{font-size:26px}
+.gift .lnk{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--vison2)}
+.gift:hover{background:rgba(255,255,255,.05)}
+
+/* experiencias view */
+#experiencias{display:none}
+body.exp #experiencias{display:block}
+body.exp main{display:none}
+.exhead{background:var(--choc);color:var(--cream);text-align:center;padding:110px 18px 56px}
+.exhead p{max-width:560px;margin:14px auto 0;color:var(--vison2)}
+.exgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:26px;max-width:1080px}#libreW[hidden]{display:none!important}.ph{position:relative}.ph img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}.cr{position:absolute;right:8px;bottom:6px;font-size:11px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7);text-decoration:none;opacity:.85}.tierh{font:400 28px "Bodoni Moda",serif;text-align:center;margin-bottom:16px;display:flex;align-items:center;gap:16px;white-space:nowrap}.tierh::before,.tierh::after{content:"";flex:1;height:1px;background:var(--vison2)}
+.ex{display:flex;flex-direction:column;background:#fffaf4;border:1px solid var(--vison2);border-radius:16px;overflow:hidden}
+.ex svg,.ex img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.ex .b{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.ex .cat{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--vison)}
+.ex p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.ex .price{font:400 26px "Bodoni Moda",serif;white-space:nowrap;margin:10px 0 12px}
+.ex .btn{width:100%}
+.back{position:fixed;top:12px;left:12px;z-index:25}
+
+/* modal */
+dialog{border:0;border-radius:20px;padding:0;max-width:min(520px,94vw);width:100%;background:var(--cream);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(28,19,15,.7)}
+.mh{background:var(--choc);color:var(--cream);padding:26px 26px 22px;position:relative}
+.mh .x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:inherit;font-size:22px;cursor:pointer}
+.mb{padding:22px 26px 26px}
+.acct{border:1px solid var(--vison2);border-radius:12px;padding:14px 16px;margin-bottom:12px;font-size:15px}
+.acct div{display:flex;justify-content:space-between;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.acct b{font-weight:500}
+.copy{min-height:36px;padding:4px 14px;font-size:11px}
+.mb form{margin-top:16px}.wa{font-size:15px;margin:4px 0 8px}.wa .btn{margin-top:8px}
+
+footer{text-align:center;padding:56px 18px 64px;background:#1c130f;color:var(--vison2)}
+footer .n{font:400 34px "Bodoni Moda",serif;color:var(--cream)}
+
+@media(max-width:820px){.grid3{grid-template-columns:minmax(0,1fr);max-width:420px}.where{grid-template-columns:minmax(0,1fr)}.where .ph{max-width:360px;margin:0 auto;width:100%}}
+@media(max-width:600px){nav{gap:2px 14px}nav a{font-size:11px;letter-spacing:.16em}.choice{grid-template-columns:1fr}.gift{padding:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,nav{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sol" viewBox="0 -8 200 88"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+<path d="M131 26 A10 10 0 0 1 151 26" fill="currentColor" fill-opacity=".15"/><path d="M128 20 l-4 -3 M134 14 l-2 -4 M141 12 v-5 M148 14 l2 -4 M154 20 l4 -3" stroke-width=".9"/>
+<path d="M30 64 V30 H170 V64"/><path d="M28 26 H172 M28 26 V30 H172 V26 M32 33 H168" />
+<path d="M30 59 H86 M114 59 H170" stroke-width=".7" opacity=".7"/>
+<path d="M41 58 V43 A7 7 0 0 1 55 43 V58"/><path d="M48 37 V58 M41 47 H55 M41 52.5 H55" stroke-width=".6" opacity=".7"/><path d="M41 58 H55" stroke-width=".8"/><path d="M67 58 V43 A7 7 0 0 1 81 43 V58"/><path d="M74 37 V58 M67 47 H81 M67 52.5 H81" stroke-width=".6" opacity=".7"/><path d="M67 58 H81" stroke-width=".8"/><path d="M119 58 V43 A7 7 0 0 1 133 43 V58"/><path d="M126 37 V58 M119 47 H133 M119 52.5 H133" stroke-width=".6" opacity=".7"/><path d="M119 58 H133" stroke-width=".8"/><path d="M145 58 V43 A7 7 0 0 1 159 43 V58"/><path d="M152 37 V58 M145 47 H159 M145 52.5 H159" stroke-width=".6" opacity=".7"/><path d="M145 58 H159" stroke-width=".8"/><path d="M92.5 61 V42.5 A7.5 7.5 0 0 1 107.5 42.5 V61"/><path d="M100 43 V61 M92.5 50 H107.5" stroke-width=".6" opacity=".7"/><path d="M90 61 H110 M88 63 H112" stroke-width=".9"/><path d="M59 61 V38 H63 V61 M58 38 H64" stroke-width=".8"/><path d="M85 61 V38 H89 V61 M84 38 H90" stroke-width=".8"/><path d="M111 61 V38 H115 V61 M110 38 H116" stroke-width=".8"/><path d="M137 61 V38 H141 V61 M136 38 H142" stroke-width=".8"/><path d="M87 41 v2 M85.7 43 h2.6 l-.6 3 h-1.4z" stroke-width=".7" fill="currentColor" fill-opacity=".35"/><path d="M113 41 v2 M111.7 43 h2.6 l-.6 3 h-1.4z" stroke-width=".7" fill="currentColor" fill-opacity=".35"/>
+<path d="M85 34 H115" stroke-width="1.6"/><path d="M87 34 Q100 50 113 34 Q100 44 87 34Z" fill="currentColor" fill-opacity=".12" stroke-width=".8"/><path d="M87 34 Q84 50 86 64 H90 Q89 48 90 35 M113 34 Q116 50 114 64 H110 Q111 48 110 35" fill="currentColor" fill-opacity=".12" stroke-width=".8"/>
+<path d="M82 64 l1 -6 M84 64 l3 -7 M83 64 l-1 -7 M80 64 l-2 -5" stroke-width=".7"/><path d="M117 64 l-1 -6 M118 64 l2 -7 M119 64 l4 -5 M116 64 l-3 -5" stroke-width=".7"/>
+<path d="M14 64 Q17 37.0 15.5 10" stroke-width="2.0"/><path d="M15.5 10 q-8.0 -1.0 -16.0 4.0"/><path d="M15.5 10 q8.0 -1.0 16.0 4.0"/><path d="M15.5 10 q-6.0 -9.0 -12.0 -4.0"/><path d="M15.5 10 q6.0 -9.0 12.0 -4.0"/><path d="M15.5 10 q-2.5 -14.0 -5.0 -9.0"/><path d="M15.5 10 q3.0 -14.0 6.0 -9.0"/><path d="M15.5 10 q-7.0 6.0 -14.0 11.0"/><path d="M15.5 10 q7.0 6.0 14.0 11.0"/><path d="M26 64 Q23 42.0 24.5 20" stroke-width="1.6"/><path d="M24.5 20 q-6.0 -0.8 -12.0 3.0"/><path d="M24.5 20 q6.0 -0.8 12.0 3.0"/><path d="M24.5 20 q-4.5 -6.8 -9.0 -3.0"/><path d="M24.5 20 q4.5 -6.8 9.0 -3.0"/><path d="M24.5 20 q-1.9 -10.5 -3.8 -6.8"/><path d="M24.5 20 q2.2 -10.5 4.5 -6.8"/><path d="M24.5 20 q-5.2 4.5 -10.5 8.2"/><path d="M24.5 20 q5.2 4.5 10.5 8.2"/><path d="M186 64 Q183 37.0 184.5 10" stroke-width="2.0"/><path d="M184.5 10 q-8.0 -1.0 -16.0 4.0"/><path d="M184.5 10 q8.0 -1.0 16.0 4.0"/><path d="M184.5 10 q-6.0 -9.0 -12.0 -4.0"/><path d="M184.5 10 q6.0 -9.0 12.0 -4.0"/><path d="M184.5 10 q-2.5 -14.0 -5.0 -9.0"/><path d="M184.5 10 q3.0 -14.0 6.0 -9.0"/><path d="M184.5 10 q-7.0 6.0 -14.0 11.0"/><path d="M184.5 10 q7.0 6.0 14.0 11.0"/><path d="M174 64 Q177 42.0 175.5 20" stroke-width="1.6"/><path d="M175.5 20 q-6.0 -0.8 -12.0 3.0"/><path d="M175.5 20 q6.0 -0.8 12.0 3.0"/><path d="M175.5 20 q-4.5 -6.8 -9.0 -3.0"/><path d="M175.5 20 q4.5 -6.8 9.0 -3.0"/><path d="M175.5 20 q-1.9 -10.5 -3.8 -6.8"/><path d="M175.5 20 q2.2 -10.5 4.5 -6.8"/><path d="M175.5 20 q-5.2 4.5 -10.5 8.2"/><path d="M175.5 20 q5.2 4.5 10.5 8.2"/><g opacity=".55"><path d="M58 26 Q61 18.0 59.5 10" stroke-width="1.3"/><path d="M59.5 10 q-5.6 -0.7 -11.2 2.8"/><path d="M59.5 10 q5.6 -0.7 11.2 2.8"/><path d="M59.5 10 q-4.2 -6.3 -8.4 -2.8"/><path d="M59.5 10 q4.2 -6.3 8.4 -2.8"/><path d="M59.5 10 q-1.8 -9.8 -3.5 -6.3"/><path d="M59.5 10 q2.1 -9.8 4.2 -6.3"/><path d="M59.5 10 q-4.9 4.2 -9.8 7.7"/><path d="M59.5 10 q4.9 4.2 9.8 7.7"/><path d="M118 26 Q115 17.0 116.5 8" stroke-width="1.3"/><path d="M116.5 8 q-6.0 -0.8 -12.0 3.0"/><path d="M116.5 8 q6.0 -0.8 12.0 3.0"/><path d="M116.5 8 q-4.5 -6.8 -9.0 -3.0"/><path d="M116.5 8 q4.5 -6.8 9.0 -3.0"/><path d="M116.5 8 q-1.9 -10.5 -3.8 -6.8"/><path d="M116.5 8 q2.2 -10.5 4.5 -6.8"/><path d="M116.5 8 q-5.2 4.5 -10.5 8.2"/><path d="M116.5 8 q5.2 4.5 10.5 8.2"/></g><path d="M2 64 H198"/><path d="M30 70 Q100 67 170 70 M60 75 Q100 73 140 75" opacity=".5"/>
+</g></symbol>
+</svg>
+
+<nav id="nav" aria-label="Secciones">
+  <a href="#inicio">Inicio</a><a href="#cuando">Cuándo y dónde</a><a href="#confirmar">Confirmar</a><a href="#regalos">Regalos</a>
+</nav>
+
+<main>
+<header class="hero" id="inicio">
+  <img src="fondo.jpg" alt="Manu y Leo bailando">
+  <div>
+    <div class="small">Nos casamos</div>
+    <h1>MANU <span class="amp">&amp;</span> LEO</h1>
+    <div class="date">13/02/2027</div>
+    <div class="count" id="count" aria-label="Cuenta regresiva">
+      <div><b id="cd-d">–</b><span>días</span></div><div><b id="cd-h">–</b><span>horas</span></div><div><b id="cd-m">–</b><span>min</span></div>
+    </div>
+    <div class="place small">Estancia Causana<br>Córdoba, Argentina</div>
+  </div>
+</header>
+
+<section class="band" id="cuando">
+  <div class="wrap">
+    <div class="narrow">
+      <svg class="palapa" viewBox="0 0 200 88"><use href="#sol"/></svg>
+      <h2>Sábado 13 de febrero</h2>
+      <p>Queremos que nos acompañes en uno de los días más importantes de nuestras vidas.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="small">Ceremonia</div><span class="time">16:30 hs</span><h3>Parroquia de Urca</h3><p>Parroquia María Madre del Redentor y de los Santos Juan y Pablo</p><a class="btn" style="margin-top:22px" href="https://www.google.com/maps/search/?api=1&query=Parroquia+Mar%C3%ADa+Madre+del+Redentor+Urca+C%C3%B3rdoba">Cómo llegar</a></div>
+      <div class="card"><div class="small">Celebración</div><span class="time">18:00 hs</span><h3>Estancia Causana</h3><p>Recepción, civil y fiesta.</p><a class="btn" style="margin-top:22px" href="https://www.google.com/maps/search/?api=1&query=Estancia+Causana+C%C3%B3rdoba+Argentina">Cómo llegar</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band sand" id="confirmar">
+  <div class="narrow">
+    <svg class="palapa" viewBox="0 0 200 88"><use href="#sol"/></svg>
+    <h2>¿Venís?</h2>
+    <p>Por favor, completá el formulario confirmando tu asistencia.</p>
+    <p class="small" style="font-size:12px;color:var(--terra);margin-top:-4px">Completar un formulario por persona</p>
+    <form id="rsvp" novalidate>
+      <label>Nombre y apellido<input name="nombre" required autocomplete="name"></label>
+      <fieldset><legend>¿Vas a venir?</legend>
+        <div class="choice">
+          <label><input type="radio" name="asiste" value="Sí" required> Sí, ¡ahí estaré!</label>
+          <label><input type="radio" name="asiste" value="No"> No puedo ir</label>
+        </div>
+      </fieldset>
+      <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label>Restricción alimentaria
+        <select name="restriccion" id="restr">
+          <option>Ninguna</option><option>Vegetariano/a</option><option>Vegano/a</option><option>Celíaco/a (sin TACC)</option><option>Otra</option>
+        </select></label>
+      <label id="detW" hidden>Contanos cuál<input name="detalle"></label>
+      <label>¿Qué canción no puede faltar?<input name="cancion" placeholder="¡Escribila acá!"></label>
+      <label>Un mensaje para nosotros (opcional)<textarea name="mensaje"></textarea></label>
+      <div class="err" id="rsvpErr" role="alert"></div>
+      <button class="btn solid" type="submit">Confirmar asistencia</button>
+    </form>
+    <div class="ok" id="rsvpOk" role="status"><h3>¡Gracias!</h3><p>Recibimos tu respuesta. Nos vemos el 13 de febrero.</p></div>
+  </div>
+</section>
+
+<section class="band dark" id="regalos">
+  <div class="narrow">
+    <svg class="palapa" viewBox="0 0 200 88"><use href="#sol"/></svg>
+    <h2>Regalos</h2>
+    <p>¡Nos encantaría compartir este momento con vos!<br>Y si querés hacernos un regalo, te dejamos nuestra lista:</p>
+    <a class="gift" href="#experiencias"><h3>Luna de Miel · Sudáfrica</h3><span class="lnk">Ver experiencias para regalar →</span></a>
+  </div>
+</section>
+
+<section class="band">
+  <div class="narrow">
+    <h2>Te esperamos</h2>
+    <p>Gracias por ser parte de nuestra historia.</p>
+  </div>
+</section>
+</main>
+
+<section id="experiencias" aria-label="Experiencias para regalar">
+  <a class="btn solid back" href="#regalos">← Volver</a>
+  <div class="exhead">
+    <div class="small">Luna de miel</div>
+    <h2 style="margin-top:12px">Sudáfrica &amp; Isla Mauricio</h2>
+    <p>Elegí una experiencia para regalarnos en nuestro viaje.</p>
+  </div>
+  <div class="band sand"><div class="wrap exgrid" id="exgrid"></div></div>
+</section>
+
+<dialog id="dlg" aria-labelledby="dlgT">
+  <div class="mh"><button class="x" id="dlgX" aria-label="Cerrar">✕</button><div class="small" id="dlgCat"></div><h3 id="dlgT" style="font-size:28px;margin-top:8px"></h3><div id="dlgP" style="margin-top:6px"></div></div>
+  <div class="mb">
+    <div class="small" style="font-size:12px;margin-bottom:10px">Datos para transferir</div>
+    <div class="acct">
+      <div><b>Banco Santander · pesos y dólares</b></div>
+      Titular: Manuela Bustamante<br>CUIT/CUIL: 27-39624311-9<br>Sucursal: 029 - Av. Santa Fe<br>Cuenta única: 029-030269/4
+      <div style="margin-top:10px"><span>CBU: 0720029888000003026940</span><button class="btn copy" data-copy="0720029888000003026940" data-l="Copiar CBU">Copiar CBU</button></div>
+      <div style="margin-top:6px"><span>Alias: BAR.PODER.VERDE</span><button class="btn copy" data-copy="BAR.PODER.VERDE" data-l="Copiar alias">Copiar alias</button></div>
+    </div>
+    <p class="wa">Mandanos el comprobante por WhatsApp al <b>11 3319-8250</b>.<br><a class="btn copy" id="waL" href="https://wa.me/5491133198250">Enviar por WhatsApp</a></p>
+    <form id="gform" novalidate>
+      <label>Tu nombre<input name="nombre" required></label>
+      <div id="libreW" hidden style="display:grid;grid-template-columns:110px 1fr;gap:10px"><label>Moneda<select name="moneda"><option>USD</option><option>ARS</option></select></label><label>Monto<input name="libre" type="number" min="1" inputmode="numeric"></label></div>
+      <label>Un mensaje para Manu &amp; Leo<textarea name="mensaje"></textarea></label>
+      <div class="err" id="gErr" role="alert"></div>
+      <button class="btn solid" type="submit">Avisar que regalé</button>
+    </form>
+    <div class="ok" id="gOk" role="status"><h3>¡Gracias!</h3><p>Ya recibimos tu mensaje. ¡Nos vemos en la pista!</p></div>
+  </div>
+</dialog>
+
+<footer><div class="n">Manu <span class="amp">&amp;</span> Leo</div><div class="small" style="margin-top:10px;font-size:12px">13 · 02 · 2027 · Estancia Causana</div></footer>
+
+<script>
+{
+// Pegá acá la URL de la aplicación web de Google Apps Script (termina en /exec)
+const SCRIPT_URL = "";
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+// nav + countdown
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("on", scrollY > 40 || document.body.classList.contains("exp"));
+addEventListener("scroll", onScroll, {passive:true}); onScroll();
+const target = new Date("2027-02-13T16:30:00-03:00").getTime();
+const tick = () => {
+  let ms = Math.max(0, target - Date.now());
+  $("#cd-d").textContent = Math.floor(ms/864e5);
+  $("#cd-h").textContent = Math.floor(ms/36e5)%24;
+  $("#cd-m").textContent = Math.floor(ms/6e4)%60;
+};
+tick(); setInterval(tick, 30000);
+
+// envío a Google Sheets
+async function send(data){
+  if (!SCRIPT_URL) { await new Promise(r=>setTimeout(r,500)); return; } // modo vista previa
+  await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors", body:new URLSearchParams(data)});
+}
+
+// RSVP
+$("#restr").addEventListener("change", e => { $("#detW").hidden = e.target.value !== "Otra"; });
+$("#rsvp").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, d = Object.fromEntries(new FormData(f));
+  if (!d.nombre?.trim()) { $("#rsvpErr").textContent = "Escribí tu nombre y apellido."; return; }
+  if (!d.asiste) { $("#rsvpErr").textContent = "Contanos si vas a venir."; return; }
+  $("#rsvpErr").textContent = ""; const b = f.querySelector("button"); b.disabled = true; b.textContent = "Enviando…";
+  try { await send({tipo:"rsvp", ...d}); f.hidden = true; $("#rsvpOk").classList.add("show"); }
+  catch { $("#rsvpErr").textContent = "No se pudo enviar. Probá de nuevo en un ratito."; b.disabled = false; b.textContent = "Confirmar asistencia"; }
+});
+
+// experiencias
+const SKY = (a,b) => `<defs><linearGradient id="g${a.slice(1)}${b.slice(1)}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="320" height="180" fill="url(#g${a.slice(1)}${b.slice(1)})"/>`;
+const SUN = (x,y,r=20,c="#f6dcbc") => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+const PALM = (x,y,s=1,c="#2b1d17") => `<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="${c}" stroke-linecap="round"><path d="M0 0 Q6 -40 2 -80" stroke-width="5"/><g stroke-width="3"><path d="M2 -80 q-18 -8 -34 6"/><path d="M2 -80 q18 -8 34 6"/><path d="M2 -80 q-14 -16 -30 -12"/><path d="M2 -80 q14 -18 30 -12"/><path d="M2 -80 q-4 -14 -10 -22"/><path d="M2 -80 q-20 4 -28 20"/><path d="M2 -80 q20 4 28 20"/></g></g>`;
+const ACACIA = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})" fill="#2b1d17"><path d="M-2 0 L-1 -34 L-12 -44 L-9 -45 L0 -38 L4 -48 L7 -47 L3 -36 L2 0Z"/><ellipse cx="-4" cy="-50" rx="34" ry="7"/><ellipse cx="6" cy="-55" rx="22" ry="5"/></g>`;
+const ART = {
+  cape:  () => SKY("#e7b48f","#f4dcc6") + SUN(250,70,22) + `<path d="M0 118 L40 96 L70 64 L190 62 L214 84 L260 92 L320 110 V180 H0Z" fill="#7d5a47"/><path d="M70 64 L190 62" stroke="#5d4031" stroke-width="2"/><path d="M0 128 H320 V180 H0Z" fill="#a98471"/><g fill="#f4dcc6" opacity=".8">${[20,44,66,92,118,150,182,214,240,270,296].map((x,i)=>`<rect x="${x}" y="${120-(i%3)*4}" width="10" height="${8+(i%3)*4}"/>`).join("")}</g><path d="M0 146 Q80 140 160 146 T320 146 V180 H0Z" fill="#5d4031"/>`,
+  vines: () => SKY("#e9bf98","#f6e4d1") + SUN(80,62,18) + `<path d="M0 104 Q60 70 130 92 Q200 60 320 96 V180 H0Z" fill="#9b7b66"/><g transform="translate(196 84)"><path d="M0 26 V8 H44 V26Z" fill="#f6efe6"/><path d="M14 8 Q22 -8 30 8Z" fill="#f6efe6"/><path d="M-3 9 H47" stroke="#5d4031" stroke-width="2"/><rect x="19" y="14" width="6" height="12" fill="#5d4031"/></g><path d="M0 120 Q160 100 320 122 V180 H0Z" fill="#7d5a47"/>${[0,1,2,3,4].map(i=>`<path d="M${-20+i*10} 180 Q${100+i*30} ${128+i*2} ${340} ${124+i*12}" stroke="#4a3328" stroke-width="3" stroke-dasharray="2 6" fill="none"/>`).join("")}`,
+  sea:   () => SKY("#e2ad8a","#f3dccb") + SUN(170,96,26) + `<path d="M0 72 Q40 66 70 84 L90 100 H0Z" fill="#5d4031"/><path d="M0 100 H320 V180 H0Z" fill="#8a6a58"/>${[112,126,142,160].map((y,i)=>`<path d="M${i*14} ${y} q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" stroke="#e8c9ad" stroke-width="1.5" fill="none" opacity="${.9-i*.15}"/>`).join("")}<path d="M220 124 q10 -16 22 0 Z M250 132 q8 -12 18 0Z" fill="#2b1d17"/>`,
+  elephant: () => SKY("#e6ae84","#f4d8bd") + SUN(240,82,30) + `<path d="M0 132 H320 V180 H0Z" fill="#8a6a58"/><ellipse cx="40" cy="132" rx="50" ry="14" fill="#6b4c3c"/><ellipse cx="290" cy="130" rx="44" ry="12" fill="#6b4c3c"/><g fill="#2b1d17" transform="translate(150 70)"><path d="M0 22 Q4 0 34 0 Q62 0 68 22 L68 64 H58 L56 42 H18 L16 64 H6 L6 40 Q-4 46 -10 60 Q-14 66 -18 60 Q-8 40 -4 26Z"/><path d="M6 14 Q-2 10 -4 26 Q2 34 12 30Z" fill="#4a3328"/><path d="M68 22 q8 6 6 20" stroke="#2b1d17" stroke-width="2" fill="none"/></g><g fill="#2b1d17" transform="translate(96 104) scale(.5)"><path d="M0 22 Q4 0 34 0 Q62 0 68 22 L68 64 H58 L56 42 H18 L16 64 H6 L6 40 Q-4 46 -10 60 Q-14 66 -18 60 Q-8 40 -4 26Z"/></g>`,
+  kruger: () => SKY("#d99a6f","#f2d0b2") + SUN(110,92,34,"#f8d8b0") + `<path d="M0 128 H320 V180 H0Z" fill="#7d5a47"/>` + ACACIA(70,132,1.1) + ACACIA(270,130,.7) + `<g fill="#2b1d17" transform="translate(190 52)"><path d="M10 0 l10 4 l-4 4 l-2 22 l14 30 l14 0 l4 18 v28 h-4 l-2 -24 l-8 0 l-2 24 h-4 l0 -26 l-10 -2 l-2 28 h-4 v-30 l-4 26 h-4 l2 -34 l-2 -30 l2 -24 l-4 -4 z"/></g>`,
+  mauritius: () => SKY("#e8b48e","#f5e2d0") + SUN(200,90,24) + `<path d="M140 104 L190 54 L216 72 L250 104Z" fill="#6b4c3c"/><path d="M0 104 H320 V180 H0Z" fill="#9fb3ad"/><path d="M0 122 Q160 112 320 126 V180 H0Z" fill="#7f9994"/><path d="M0 150 Q120 140 200 150 Q260 156 320 148 V180 H0Z" fill="#ead8c3"/>` + PALM(56,152,.85) + PALM(84,156,.6),
+  boat: () => SKY("#e3a985","#f4dccb") + SUN(110,96,26) + `<path d="M0 104 H320 V180 H0Z" fill="#8f9f98"/>${[118,134,152].map(y=>`<path d="M0 ${y} q20 -4 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" stroke="#d9cbbb" stroke-width="1.4" fill="none"/>`).join("")}<g fill="#2b1d17"><path d="M200 112 H262 L254 122 H208Z"/><path d="M228 110 V48 L258 108Z" fill="#f6efe6"/><path d="M226 108 L226 58 L204 106Z" fill="#efe2d3"/></g>`,
+  plane: () => SKY("#d9a07a","#f3d9c4") + SUN(240,120,40,"#f6dcbc") + `<g fill="#f7efe6" opacity=".9"><ellipse cx="70" cy="140" rx="70" ry="16"/><ellipse cx="150" cy="150" rx="80" ry="18"/><ellipse cx="270" cy="152" rx="70" ry="14"/></g><g fill="#2b1d17" transform="translate(150 66) rotate(-12)"><path d="M-60 0 Q-60 -6 -50 -6 H40 Q56 -6 60 0 Q56 6 40 6 H-50 Q-60 6 -60 0Z"/><path d="M-10 -4 L-30 -36 H-20 L14 -4Z M-10 4 L-30 36 H-20 L14 4Z M-50 -4 L-58 -22 H-52 L-40 -4Z"/></g><path d="M40 92 Q90 86 110 76" stroke="#fff" stroke-width="2" stroke-dasharray="4 6" fill="none" opacity=".8"/>`,
+  libre: () => `<rect width="320" height="180" fill="#3a2820"/><use href="#sol" x="50" y="40" width="220" height="97" color="#e3b58f"/>`
+};
+// fotos: Wikimedia Commons (licencias libres). Si no cargan, se muestra la ilustración.
+const EXP = [
+  {"g": "libre", "cat": "Monto libre", "t": "Monto libre", "d": "Elegí vos el monto, en dólares o en pesos, para seguir sumando experiencias juntos.", "p": 0, "a": "libre", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia_trees_on_the_savannah_(47940414406).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Acacia_trees_on_the_savannah_(47940414406).jpg"},
+  {"g": "cape", "cat": "Cape Town", "t": "Teleférico a Table Mountain", "d": "Subir a la montaña de mesa y ver Cape Town desde arriba.", "p": 100, "a": "cape", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Table_Mountain,_Cape_Town_(P1050222).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Table_Mountain,_Cape_Town_(P1050222).jpg"},
+  {"g": "cape", "cat": "Cape Town", "t": "Pingüinos en Boulders Beach", "d": "Una mañana de playa entre pingüinos africanos.", "p": 200, "a": "sea", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Boulders_beach_Simons_town.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Boulders_beach_Simons_town.jpg"},
+  {"g": "stell", "cat": "Stellenbosch", "t": "Degustación de vinos", "d": "Recorrer bodegas y probar los mejores vinos del Cabo.", "p": 300, "a": "vines", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stellenbosch_Vineyard.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Stellenbosch_Vineyard.jpg"},
+  {"g": "cape", "cat": "Cape Town", "t": "Catamarán al atardecer", "d": "Navegar la bahía con un brindis mientras cae el sol.", "p": 400, "a": "boat", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_Sunset_HDR.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Cape_Town_Sunset_HDR.jpg"},
+  {"g": "cape", "cat": "Cape Town", "t": "Cabo de Buena Esperanza", "d": "Recorrer la península por la costa hasta el extremo del Cabo.", "p": 500, "a": "cape", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_of_Good_Hope_(Zaian_2008).JPG?width=800", "src": "https://commons.wikimedia.org/wiki/File:Cape_of_Good_Hope_(Zaian_2008).JPG"},
+  {"g": "plett", "cat": "Plettenberg Bay", "t": "Avistaje de delfines y ballenas", "d": "Salida en barco por la bahía para ver delfines, focas y ballenas.", "p": 600, "a": "sea", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Whale_Rock_Beach,_Plettenberg_Bay.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Whale_Rock_Beach,_Plettenberg_Bay.jpg"},
+  {"g": "plett", "cat": "Plettenberg Bay", "t": "Caminata por Robberg", "d": "Senderos sobre acantilados con vista al Índico.", "p": 700, "a": "sea", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Robberg_Nature_Reserve,_Plettenberg_Bay_-_53147415480.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Robberg_Nature_Reserve,_Plettenberg_Bay_-_53147415480.jpg"},
+  {"g": "addo", "cat": "Addo Elephant Park", "t": "Safari en Addo", "d": "Nuestro primer safari, entre manadas de elefantes.", "p": 800, "a": "elephant", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Addo_Elephant_National_Park-001.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Addo_Elephant_National_Park-001.jpg"},
+  {"g": "kruger", "cat": "Kruger", "t": "Safari al amanecer", "d": "Salida en 4x4 con guía para buscar a los Big Five.", "p": 900, "a": "kruger", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/South_Africa_Safari_-_Djuma_Game_Reserve_-_Sabi_Sand_-_Kruger_National_Park_(5586432004).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:South_Africa_Safari_-_Djuma_Game_Reserve_-_Sabi_Sand_-_Kruger_National_Park_(5586432004).jpg"},
+  {"g": "kruger", "cat": "Kruger", "t": "Safari al atardecer", "d": "Salida en 4x4 por la sabana y un brindis cuando cae el sol.", "p": 1000, "a": "kruger", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia_tree_on_the_savannah_(47940393888).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Acacia_tree_on_the_savannah_(47940393888).jpg"},
+  {"g": "kruger", "cat": "Kruger", "t": "Safari a pie con rangers", "d": "Recorrer la sabana caminando, acompañados por expertos.", "p": 1100, "a": "kruger", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Kruger_National_Park_(ZA),_Giraffe_--_2024_--_0431.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Kruger_National_Park_(ZA),_Giraffe_--_2024_--_0431.jpg"},
+  {"g": "kruger", "cat": "Kruger", "t": "Noche en lodge de safari", "d": "Dormir dentro de la reserva, escuchando la sabana.", "p": 1200, "a": "kruger", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Leopard_in_a_tree,_Kruger_National_Park_(13878098254).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Leopard_in_a_tree,_Kruger_National_Park_(13878098254).jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Snorkel en Blue Bay", "d": "Nadar entre corales y peces de colores.", "p": 1300, "a": "mauritius", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue_Bay_Mauritius_2014.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Blue_Bay_Mauritius_2014.jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Catamarán a Île aux Cerfs", "d": "Día de navegación, playa y almuerzo en la isla.", "p": 1400, "a": "boat", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%8Ele_aux_Cerfs,_Mauritius.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:%C3%8Ele_aux_Cerfs,_Mauritius.jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Tour a Chamarel", "d": "La tierra de siete colores y la cascada de Chamarel.", "p": 1500, "a": "mauritius", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Seven_Coloured_Earths_Geopark_in_Chamarel,_Mauritius_(53697998768).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Seven_Coloured_Earths_Geopark_in_Chamarel,_Mauritius_(53697998768).jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Helicóptero sobre Le Morne", "d": "Ver desde el aire la famosa cascada submarina.", "p": 1600, "a": "mauritius", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_the_peninsula_Le_Morne_in_Mauritius_(53698115579).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_the_peninsula_Le_Morne_in_Mauritius_(53698115579).jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Cena privada en la playa", "d": "Una mesa para dos en la arena, con el atardecer de fondo.", "p": 1700, "a": "mauritius", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mauritius_sunset,_July_2016.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Mauritius_sunset,_July_2016.jpg"},
+  {"g": "stell", "cat": "Winelands", "t": "Noche en una bodega", "d": "Dormir entre viñedos en una estancia vitivinícola.", "p": 1800, "a": "vines", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/South_Africa-Franschhoek-001.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:South_Africa-Franschhoek-001.jpg"},
+  {"g": "mau", "cat": "Isla Mauricio", "t": "Noche de hotel en Mauricio", "d": "Una noche en nuestro hotel frente al mar en la isla.", "p": 1900, "a": "mauritius", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Le_Morne_Peninsula_in_Mauritius_(53697779236).jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Le_Morne_Peninsula_in_Mauritius_(53697779236).jpg"},
+  {"g": "viaje", "cat": "Vuelos", "t": "Pasajes de avión", "d": "Nuestros pasajes para llegar a Sudáfrica y Mauricio.", "p": 2000, "a": "plane", "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ciudad_del_Cabo_desde_Cabeza_de_Le%C3%B3n,_Sud%C3%A1frica,_2018-07-22,_DD_34.jpg?width=800", "src": "https://commons.wikimedia.org/wiki/File:Ciudad_del_Cabo_desde_Cabeza_de_Le%C3%B3n,_Sud%C3%A1frica,_2018-07-22,_DD_34.jpg"}
+];
+const GROUPS = [["todas","Todas"],["cape","Cape Town"],["stell","Stellenbosch"],["plett","Plettenberg Bay"],["addo","Addo"],["kruger","Kruger"],["mau","Isla Mauricio"],["viaje","Vuelos"],["libre","Monto libre"]];
+const fmt = x => x.p ? "USD " + x.p.toLocaleString("es-AR") : "USD o ARS";
+function card(x,i){
+  const ill = `<svg viewBox="0 0 320 180" aria-hidden="true">${ART[x.a]()}</svg>`;
+  const pic = x.img ? `<div class="ph" data-a="${x.a}"><img src="${esc(x.img)}" alt="${esc(x.t)}" loading="lazy" referrerpolicy="no-referrer"><a class="cr" href="${esc(x.src)}">Foto: Wikimedia Commons</a></div>` : ill;
+  return `<article class="ex">${pic}<div class="b"><span class="cat">${esc(x.cat)}</span><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p>
+    <div class="price">${fmt(x)}</div><button class="btn solid" type="button" data-i="${i}">Regalá esta experiencia</button></div></article>`;
+}
+function renderGrid(){
+  $("#exgrid").innerHTML = EXP.map((x,i) => card(x,i)).join("");
+}
+// si la foto no carga (por ejemplo en la vista previa), muestra la ilustración
+$("#exgrid").addEventListener("error", e => {
+  const im = e.target; if (im.tagName !== "IMG") return;
+  const ph = im.closest(".ph"); ph.outerHTML = `<svg viewBox="0 0 320 180" aria-hidden="true">${ART[ph.dataset.a]()}</svg>`;
+}, true);
+renderGrid();
+
+// modal
+const dlg = $("#dlg"); let cur = null;
+$("#exgrid").addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]"); if (!b) return;
+  cur = EXP[+b.dataset.i];
+  $("#dlgCat").textContent = cur.cat; $("#dlgT").textContent = cur.t; $("#dlgP").textContent = fmt(cur);
+  $("#libreW").hidden = !!cur.p; $("#gform").hidden = false; $("#gform").reset(); $("#gErr").textContent = "";
+  const sb = $("#gform button"); sb.disabled = false; sb.textContent = "Avisar que regalé";
+  $("#gOk").classList.remove("show");
+  $("#waL").href = "https://wa.me/5491133198250?text=" + encodeURIComponent("¡Hola Manu y Leo! Les regalé: " + cur.t + " (" + fmt(cur) + "). Les mando el comprobante.");
+  dlg.showModal();
+});
+$("#dlgX").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("click", async e => {
+  const c = e.target.closest("[data-copy]"); if (!c) return;
+  try { await navigator.clipboard.writeText(c.dataset.copy); c.textContent = "¡Copiado!"; } catch { c.textContent = c.dataset.copy; }
+  setTimeout(() => c.textContent = c.dataset.l || "Copiar", 1800);
+});
+$("#gform").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, d = Object.fromEntries(new FormData(f));
+  if (!d.nombre?.trim()) { $("#gErr").textContent = "Escribí tu nombre."; return; }
+  const monto = cur.p ? "USD " + cur.p : (d.moneda || "USD") + " " + (d.libre || "libre");
+  const b = f.querySelector("button"); b.disabled = true; b.textContent = "Enviando…";
+  try { await send({tipo:"regalo", nombre:d.nombre, experiencia:cur.t, monto, mensaje:d.mensaje||""}); f.hidden = true; $("#gOk").classList.add("show"); }
+  catch { $("#gErr").textContent = "No se pudo enviar. Probá de nuevo."; b.disabled = false; b.textContent = "Avisar que regalé"; }
+});
+
+// vistas por hash
+function route(){
+  const ex = location.hash === "#experiencias";
+  document.body.classList.toggle("exp", ex);
+  if (ex) scrollTo(0,0); onScroll();
+}
+addEventListener("hashchange", route); route();
+}
+</script>
+</body>
+</html>
