@@ -204,7 +204,7 @@ footer .n{font:400 34px "Bodoni Moda",serif;color:var(--cream)}
       <div class="err" id="rsvpErr" role="alert"></div>
       <button class="btn solid" type="submit">Confirmar asistencia</button>
     </form>
-    <div class="ok" id="rsvpOk" role="status"><h3>¡Gracias!</h3><p>Recibimos tu respuesta. Nos vemos el 13 de febrero.</p></div>
+    <div class="ok" id="rsvpOk" role="status"><h3>¡Gracias!</h3><p>Recibimos tu respuesta. Nos vemos el 13 de febrero.</p><button class="btn" type="button" id="otra">Completar para otra persona</button></div>
   </div>
 </section>
 
@@ -281,7 +281,20 @@ tick(); setInterval(tick, 30000);
 
 // envío a Google Sheets
 async function send(data){
-  return Promise.race([sendForm(data), new Promise(r => setTimeout(r, 6000))]);
+  if (!SCRIPT_URL) { await new Promise(r=>setTimeout(r,500)); return {ok:true}; }
+  // 1) intento normal, leyendo la respuesta de la planilla
+  const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 12000);
+  try {
+    const r = await fetch(SCRIPT_URL, {method:"POST", body:new URLSearchParams(data), signal:ctl.signal});
+    clearTimeout(t);
+    return await r.json();
+  } catch (err) {
+    clearTimeout(t);
+    if (err.name === "AbortError") return {ok:true};
+    // 2) si el navegador no deja leer la respuesta, se envía igual con un formulario oculto
+    await Promise.race([sendForm(data), new Promise(r => setTimeout(r, 6000))]);
+    return {ok:true};
+  }
 }
 async function sendForm(data){
   if (!SCRIPT_URL) { await new Promise(r=>setTimeout(r,500)); return; } // modo vista previa
@@ -298,6 +311,10 @@ async function sendForm(data){
   });
 }
 
+// una respuesta por persona: recuerda los nombres ya enviados desde este dispositivo
+const normName = v => String(v||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ñ ]/g,"").replace(/\s+/g," ").trim();
+const sentNames = () => { try { return JSON.parse(localStorage.getItem("rsvpNames") || "[]"); } catch { return []; } };
+const saveName = k => { try { localStorage.setItem("rsvpNames", JSON.stringify([...sentNames(), k])); } catch {} };
 // RSVP
 $("#restr").addEventListener("change", e => { $("#detW").hidden = e.target.value !== "Otra"; });
 $("#rsvp").addEventListener("submit", async e => {
@@ -306,7 +323,13 @@ $("#rsvp").addEventListener("submit", async e => {
   if (!d.nombre?.trim()) { $("#rsvpErr").textContent = "Escribí tu nombre y apellido."; return; }
   if (!d.asiste) { $("#rsvpErr").textContent = "Contanos si vas a venir."; return; }
   $("#rsvpErr").textContent = ""; const b = f.querySelector("button"); b.disabled = true; b.textContent = "Enviando…";
-  try { await send({tipo:"rsvp", ...d}); f.hidden = true; $("#rsvpOk").classList.add("show"); }
+  const key = normName(d.nombre);
+  if (sentNames().includes(key)) { $("#rsvpErr").textContent = "Ya enviaste una respuesta con ese nombre. Si necesitás cambiar algo, escribinos."; b.disabled = false; b.textContent = "Confirmar asistencia"; return; }
+  try {
+    const r = await send({tipo:"rsvp", ...d});
+    if (r && r.dup) { $("#rsvpErr").textContent = "Ya recibimos una respuesta a nombre de " + d.nombre.trim() + ". Si necesitás cambiar algo, escribinos."; b.disabled = false; b.textContent = "Confirmar asistencia"; return; }
+    saveName(key); f.hidden = true; $("#rsvpOk").classList.add("show");
+  }
   catch { $("#rsvpErr").textContent = "No se pudo enviar. Probá de nuevo en un ratito."; b.disabled = false; b.textContent = "Confirmar asistencia"; }
 });
 
@@ -415,6 +438,10 @@ $("#gform").addEventListener("submit", async e => {
   catch { $("#gErr").textContent = "No se pudo enviar. Probá de nuevo."; b.disabled = false; b.textContent = "Enviar"; }
 });
 
+$("#otra").addEventListener("click", () => {
+  const f = $("#rsvp"); f.reset(); $("#detW").hidden = true; f.hidden = false; $("#rsvpOk").classList.remove("show");
+  const b = f.querySelector("button[type=submit]"); b.disabled = false; b.textContent = "Confirmar asistencia"; f.nombre.focus();
+});
 // vistas por hash
 function route(){
   const ex = location.hash === "#experiencias";
